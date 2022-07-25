@@ -1,33 +1,37 @@
 package me.youtissoum.cmmm.blocks;
 
+import me.youtissoum.cmmm.utils.ICellTickFunction;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FacingBlock;
 import net.minecraft.block.Material;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Property;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
+import net.minecraft.util.*;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 public class Cell extends FacingBlock {
+    ICellTickFunction onTickFunc;
+    int subtickId;
+
     protected Cell() {
         super(FabricBlockSettings.of(Material.METAL).noCollision().strength(10f).dropsNothing());
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
 
     @Override
-    public boolean onSyncedBlockEvent(BlockState state, World world, BlockPos pos, int type, int data) {
-        Direction direction = state.get(FACING);
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if(!world.isClient()) {
-
+            onTickFunc.call(state, world, pos, player, hand, hit, state.get(FACING));
         }
 
-        return true;
+        return ActionResult.SUCCESS;
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
