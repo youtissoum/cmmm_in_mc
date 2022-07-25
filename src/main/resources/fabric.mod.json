@@ -7,7 +7,9 @@
   "authors": [
     "youtissoum"
   ],
-  "contact": {},
+  "contact": {
+    "sources": "https://github.com/youtissoum/cmmm_in_mc"
+  },
   "license": "MIT",
   "icon": "assets/cmmm/icon.png",
   "environment": "*",
