@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "cmmm",
+  "version": "${version}",
+  "name": "cmmm",
+  "description": "cmmm but in minecraft",
+  "authors": [
+    "youtissoum"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/cmmm/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.youtissoum.cmmm.client.CmmmClient"
+    ],
+    "main": [
+      "me.youtissoum.cmmm.Cmmm"
+    ]
+  },
+  "mixins": [
+    "cmmm.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "fabric": "*",
+    "minecraft": "1.18.2"
+  }
+}

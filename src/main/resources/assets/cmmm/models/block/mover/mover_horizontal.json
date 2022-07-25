@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "cmmm:block/mover/mover_front_back",
+    "east": "cmmm:block/mover/mover_side_0",
+    "west": "cmmm:block/mover/mover_side_180",
+    "south": "cmmm:block/mover/mover_front_back",
+    "down": "cmmm:block/mover/mover_side_90",
+    "up": "cmmm:block/mover/mover_side_270"
+  }
+}
