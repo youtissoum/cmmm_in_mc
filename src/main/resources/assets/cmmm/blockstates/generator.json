@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cmmm:block/generator/generator_horizontal",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "cmmm:block/generator/generator_horizontal"
+    },
+    "facing=south": {
+      "model": "cmmm:block/generator/generator_horizontal",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cmmm:block/generator/generator_horizontal",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "cmmm:block/generator/generator_vertical",
+      "x": 180
+    },
+    "facing=down": {
+      "model": "cmmm:block/generator/generator_vertical"
+    }
+  }
+}

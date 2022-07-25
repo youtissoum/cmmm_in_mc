@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "cmmm:block/generator/generator_side_90",
+    "east": "cmmm:block/generator/generator_side_90",
+    "west": "cmmm:block/generator/generator_side_90",
+    "south": "cmmm:block/generator/generator_side_90",
+    "down": "cmmm:block/generator/generator_front_back",
+    "up": "cmmm:block/generator/generator_front_back"
+  }
+}
