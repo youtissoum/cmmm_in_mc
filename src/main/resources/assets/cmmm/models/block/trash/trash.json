@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "cmmm:block/trash/trash_side",
+    "east": "cmmm:block/trash/trash_side",
+    "west": "cmmm:block/trash/trash_side",
+    "south": "cmmm:block/trash/trash_side",
+    "down": "cmmm:block/trash/trash_up_down",
+    "up": "cmmm:block/trash/trash_up_down"
+  }
+}

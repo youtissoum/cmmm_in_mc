@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cmmm:block/push/push"
+    },
+    "facing=north": {
+      "model": "cmmm:block/push/push"
+    },
+    "facing=south": {
+      "model": "cmmm:block/push/push"
+    },
+    "facing=west": {
+      "model": "cmmm:block/push/push"
+    },
+    "facing=up": {
+      "model": "cmmm:block/push/push"
+    },
+    "facing=down": {
+      "model": "cmmm:block/push/push"
+    }
+  }
+}

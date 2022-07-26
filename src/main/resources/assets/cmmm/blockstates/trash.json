@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cmmm:block/trash/trash"
+    },
+    "facing=north": {
+      "model": "cmmm:block/trash/trash"
+    },
+    "facing=south": {
+      "model": "cmmm:block/trash/trash"
+    },
+    "facing=west": {
+      "model": "cmmm:block/trash/trash"
+    },
+    "facing=up": {
+      "model": "cmmm:block/trash/trash"
+    },
+    "facing=down": {
+      "model": "cmmm:block/trash/trash"
+    }
+  }
+}

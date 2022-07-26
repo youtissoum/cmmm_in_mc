@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cmmm:block/enemy/enemy"
+    },
+    "facing=north": {
+      "model": "cmmm:block/enemy/enemy"
+    },
+    "facing=south": {
+      "model": "cmmm:block/enemy/enemy"
+    },
+    "facing=west": {
+      "model": "cmmm:block/enemy/enemy"
+    },
+    "facing=up": {
+      "model": "cmmm:block/enemy/enemy"
+    },
+    "facing=down": {
+      "model": "cmmm:block/enemy/enemy"
+    }
+  }
+}

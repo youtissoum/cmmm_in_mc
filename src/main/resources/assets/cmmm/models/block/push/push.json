@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "cmmm:block/push/push_side",
+    "east": "cmmm:block/push/push_side",
+    "west": "cmmm:block/push/push_side",
+    "south": "cmmm:block/push/push_side",
+    "down": "cmmm:block/push/push_up_down",
+    "up": "cmmm:block/push/push_up_down"
+  }
+}

@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 public class Cell extends FacingBlock {
     ICellTickFunction onTickFunc;
     int subtickId;
+    public String cellId = "none";
 
     protected Cell() {
         super(FabricBlockSettings.of(Material.METAL).noCollision().strength(10f).dropsNothing());

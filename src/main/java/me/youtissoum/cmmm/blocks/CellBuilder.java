@@ -7,6 +7,11 @@ public class CellBuilder extends Cell {
         super();
     }
 
+    public CellBuilder cellId(String cellId) {
+        this.cellId = cellId;
+        return this;
+    }
+
     public CellBuilder subtickId(int id) {
         this.subtickId = id;
         return this;

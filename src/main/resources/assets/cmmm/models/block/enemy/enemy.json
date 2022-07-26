@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "cmmm:block/enemy/enemy_side",
+    "east": "cmmm:block/enemy/enemy_side",
+    "west": "cmmm:block/enemy/enemy_side",
+    "south": "cmmm:block/enemy/enemy_side",
+    "down": "cmmm:block/enemy/enemy_up_down",
+    "up": "cmmm:block/enemy/enemy_up_down"
+  }
+}

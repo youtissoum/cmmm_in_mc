@@ -19,12 +19,15 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
+import java.util.Objects;
+
 public class BlocksManager {
 
     public static final Cell GENERATOR = (Cell) registerBlock("generator",
             new CellBuilder()
+                    .cellId("generator")
                     .subtickId(0)
-                    .onTick((BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, Direction direction) -> {
+                    .onTick((state, world, pos, player, hand, hit, direction) -> {
                         BlockPos behind_loc = CellUtils.getLocWithDirection(pos, direction, true);
                         BlockPos front_loc = CellUtils.getLocWithDirection(pos, direction);
 
@@ -36,6 +39,13 @@ public class BlocksManager {
 
                         BlockState front_block = world.getBlockState(front_loc);
 
+                        if(front_block.getBlock() instanceof Cell front_cell) {
+                            if(Objects.equals(front_cell.cellId, "enemy")) {
+                                world.setBlockState(front_loc, Blocks.AIR.getDefaultState());
+                            }
+                            return;
+                        }
+
                         if(front_block.getBlock() != Blocks.AIR) {
                             CellUtils.pushInDirection(direction, front_loc, world, front_block);
                         }
@@ -45,10 +55,27 @@ public class BlocksManager {
 
     public static final Cell MOVER = (Cell) registerBlock("mover",
             new CellBuilder()
+                    .cellId("mover")
                     .subtickId(3)
-                    .onTick((BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, Direction direction) ->
-                            CellUtils.pushInDirection(direction, pos, world, state)
-                    ), ItemGroup.MISC);
+                    .onTick((state, world, pos, player, hand, hit, direction) -> CellUtils.pushInDirection(direction, pos, world, state)), ItemGroup.MISC);
+
+    public static final Cell PUSH = (Cell) registerBlock("push",
+            new CellBuilder()
+                    .cellId("push")
+                    .subtickId(-1)
+                    .onTick(((state, world, pos, player, hand, hit, direction) -> {})), ItemGroup.MISC);
+
+    public static final Cell ENEMY = (Cell) registerBlock("enemy",
+            new CellBuilder()
+                    .cellId("enemy")
+                    .subtickId(-1)
+                    .onTick((state, world, pos, player, hand, hit, direction) -> {}), ItemGroup.MISC);
+
+    public static final Cell TRASH = (Cell) registerBlock("trash",
+            new CellBuilder()
+                    .cellId("trash")
+                    .subtickId(-1)
+                    .onTick((state, world, pos, player, hand, hit, direction) -> {}), ItemGroup.MISC);
 
 
     private static Block registerBlock(String name, Block block, ItemGroup group) {
