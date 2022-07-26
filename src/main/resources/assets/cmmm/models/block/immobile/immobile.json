@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "cmmm:block/immobile/immobile",
+    "east": "cmmm:block/immobile/immobile",
+    "west": "cmmm:block/immobile/immobile",
+    "south": "cmmm:block/immobile/immobile",
+    "down": "cmmm:block/immobile/immobile",
+    "up": "cmmm:block/immobile/immobile"
+  }
+}

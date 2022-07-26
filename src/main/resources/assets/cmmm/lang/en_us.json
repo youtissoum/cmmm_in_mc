@@ -2,6 +2,8 @@
   "block.cmmm.generator": "Generator Cell",
   "block.cmmm.mover": "Mover Cell",
   "block.cmmm.push": "Push Cell",
+  "block.cmmm.slide": "Slide Cell",
+  "block.cmmm.immobile": "Immobile Cell",
   "block.cmmm.enemy": "Enemy Cell",
   "block.cmmm.trash": "Trash Cell"
 }

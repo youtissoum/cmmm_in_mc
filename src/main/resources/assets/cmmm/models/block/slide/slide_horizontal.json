@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "cmmm:block/slide/slide_front_back",
+    "east": "cmmm:block/slide/slide_side_0",
+    "west": "cmmm:block/slide/slide_side_180",
+    "south": "cmmm:block/slide/slide_front_back",
+    "down": "cmmm:block/slide/slide_side_90",
+    "up": "cmmm:block/slide/slide_side_270"
+  }
+}

@@ -1,7 +1,9 @@
 package me.youtissoum.cmmm.blocks;
 
 import me.youtissoum.cmmm.Cmmm;
+import me.youtissoum.cmmm.ModRegistries;
 import me.youtissoum.cmmm.utils.CellUtils;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -11,6 +13,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
@@ -40,10 +43,19 @@ public class BlocksManager {
                         BlockState front_block = world.getBlockState(front_loc);
 
                         if(front_block.getBlock() instanceof Cell front_cell) {
-                            if(Objects.equals(front_cell.cellId, "enemy")) {
-                                world.setBlockState(front_loc, Blocks.AIR.getDefaultState());
+                            switch (front_cell.cellId) {
+                                case "enemy":
+                                    world.setBlockState(front_loc, Blocks.AIR.getDefaultState());
+                                    return;
+                                case "slide":
+                                    if(direction != front_cell.direction && direction != front_cell.direction.getOpposite()) {
+                                        return;
+                                    }
+                                    break;
+                                case "trash":
+                                case "immobile":
+                                    return;
                             }
-                            return;
                         }
 
                         if(front_block.getBlock() != Blocks.AIR) {
@@ -51,31 +63,43 @@ public class BlocksManager {
                         }
 
                         world.setBlockState(front_loc, cell_to_copy);
-                    }), ItemGroup.MISC);
+                    }), ModRegistries.CELL_GROUP);
 
     public static final Cell MOVER = (Cell) registerBlock("mover",
             new CellBuilder()
                     .cellId("mover")
                     .subtickId(3)
-                    .onTick((state, world, pos, player, hand, hit, direction) -> CellUtils.pushInDirection(direction, pos, world, state)), ItemGroup.MISC);
+                    .onTick((state, world, pos, player, hand, hit, direction) -> CellUtils.pushInDirection(direction, pos, world, state)), ModRegistries.CELL_GROUP);
 
     public static final Cell PUSH = (Cell) registerBlock("push",
             new CellBuilder()
                     .cellId("push")
                     .subtickId(-1)
-                    .onTick(((state, world, pos, player, hand, hit, direction) -> {})), ItemGroup.MISC);
+                    .onTick(((state, world, pos, player, hand, hit, direction) -> {})), ModRegistries.CELL_GROUP);
+
+    public static final Cell SLIDE = (Cell) registerBlock("slide",
+            new CellBuilder()
+                    .cellId("slide")
+                    .subtickId(-1)
+                    .onTick((state, world, pos, player, hand, hit, direction) -> {}), ModRegistries.CELL_GROUP);
+
+    public static final Cell IMMOBILE = (Cell) registerBlock("immobile",
+            new CellBuilder()
+                    .cellId("immobile")
+                    .subtickId(-1)
+                    .onTick((state, world, pos, player, hand, hit, direction) -> {}), ModRegistries.CELL_GROUP);
 
     public static final Cell ENEMY = (Cell) registerBlock("enemy",
             new CellBuilder()
                     .cellId("enemy")
                     .subtickId(-1)
-                    .onTick((state, world, pos, player, hand, hit, direction) -> {}), ItemGroup.MISC);
+                    .onTick((state, world, pos, player, hand, hit, direction) -> {}), ModRegistries.CELL_GROUP);
 
     public static final Cell TRASH = (Cell) registerBlock("trash",
             new CellBuilder()
                     .cellId("trash")
                     .subtickId(-1)
-                    .onTick((state, world, pos, player, hand, hit, direction) -> {}), ItemGroup.MISC);
+                    .onTick((state, world, pos, player, hand, hit, direction) -> {}), ModRegistries.CELL_GROUP);
 
 
     private static Block registerBlock(String name, Block block, ItemGroup group) {
@@ -90,5 +114,4 @@ public class BlocksManager {
 
     public static void registerModBlocks() {
     }
-
 }

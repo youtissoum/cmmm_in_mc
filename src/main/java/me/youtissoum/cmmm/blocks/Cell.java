@@ -20,6 +20,7 @@ public class Cell extends FacingBlock {
     ICellTickFunction onTickFunc;
     int subtickId;
     public String cellId = "none";
+    public Direction direction;
 
     protected Cell() {
         super(FabricBlockSettings.of(Material.METAL).noCollision().strength(10f).dropsNothing());
@@ -36,6 +37,7 @@ public class Cell extends FacingBlock {
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
+        this.direction = ctx.getPlayerLookDirection().getOpposite();
         return this.getDefaultState().with(FACING, ctx.getPlayerLookDirection().getOpposite());
     }
 

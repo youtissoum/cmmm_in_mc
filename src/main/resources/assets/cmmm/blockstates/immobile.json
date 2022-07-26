@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cmmm:block/immobile/immobile"
+    },
+    "facing=north": {
+      "model": "cmmm:block/immobile/immobile"
+    },
+    "facing=south": {
+      "model": "cmmm:block/immobile/immobile"
+    },
+    "facing=west": {
+      "model": "cmmm:block/immobile/immobile"
+    },
+    "facing=up": {
+      "model": "cmmm:block/immobile/immobile"
+    },
+    "facing=down": {
+      "model": "cmmm:block/immobile/immobile"
+    }
+  }
+}

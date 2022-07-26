@@ -31,7 +31,15 @@ public class CellUtils {
         return getLocWithDirection(origPos, direction, false, 1);
     }
 
-    public static boolean pushInDirection(Direction direction, BlockPos pos, World world, BlockState block_to_push) {
+    /**
+     * A function to push a cell in a direction
+     * @param direction The direction to push the cell in
+     * @param pos The original position of the cell
+     * @param world The world to push the cell in
+     * @param blockToPush The BlockState of the block to push
+     * @return only true if the movement was a success
+     */
+    public static boolean pushInDirection(Direction direction, BlockPos pos, World world, BlockState blockToPush) {
         BlockPos newPos = getLocWithDirection(pos, direction);
 
         BlockState block_at_new_location = world.getBlockState(newPos);
@@ -41,13 +49,19 @@ public class CellUtils {
         }
 
         if(block_at_new_location.getBlock() instanceof Cell cell_at_new_location) {
-            if(Objects.equals(cell_at_new_location.cellId, "trash")) {
-                world.setBlockState(pos, Blocks.AIR.getDefaultState());
-                return true;
-            } else if(Objects.equals(cell_at_new_location.cellId, "enemy")) {
-                world.setBlockState(pos, Blocks.AIR.getDefaultState());
-                world.setBlockState(newPos, Blocks.AIR.getDefaultState());
-                return true;
+            switch(cell_at_new_location.cellId) {
+                case "trash":
+                    world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                case "immobile":
+                    return true;
+                case "enemy":
+                    world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                    world.setBlockState(newPos, Blocks.AIR.getDefaultState());
+                    return true;
+                case "slide":
+                    if(direction != cell_at_new_location.direction && direction != cell_at_new_location.direction.getOpposite()) {
+                        return false;
+                    }
             }
         }
 
@@ -57,7 +71,7 @@ public class CellUtils {
             }
         }
 
-        world.setBlockState(newPos, block_to_push);
+        world.setBlockState(newPos, blockToPush);
         world.setBlockState(pos, Blocks.AIR.getDefaultState());
 
         return true;
