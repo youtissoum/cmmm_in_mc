@@ -9,3 +9,7 @@ A version of cell machine but in minecraft
 
 All downloads will be in the release tab of the GitHub
 [![latest release](https://img.shields.io/github/downloads/youtissoum/cmmm_in_mc/latest/total)](https://github.com/youtissoum/cmmm_in_mc/releases)
+
+The original game that this was based found can be found at these two locations:
+- [paid](https://themysticlynx.itch.io/cell-machine-mystic-mod)
+- [free](https://discord.gg/hNzNAX5EN5)
